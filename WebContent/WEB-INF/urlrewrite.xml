@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlrewrite>
+	
+
+		 <!-- [bieu thuc chinh quy]
+		 ^: bat dau
+		 $: ket thuc
+		 [a-z] : 1 ky tu tu a den z viet thuong
+		 [A-Z] : 1 ky tu tu a den z viet hoa
+		 ([a-z]*): dai dien 0 hoacj nhieu ky tu tu a-z thuong
+		 ([A-Z]*): dai dien 0 hoacj nhieu ky tu tu A-Z hoa
+		 hay dung (.*): dai dien 0 hoac nhieu ky thu bat ky
+		          (.+): dai dien 1 hoac nhieu ky thu bat ky
+		 ([a-zA-Z]* | +): dai dien cac ky tu tu a-z A-Z 
+		 [0-9]: cac so tu 0-9
+		 hay dung  ([0-9]*): cac so tu 0-n
+		            ([0-9]+): cac so tu 1-n
+		 -->
+		<!-- /cat?cat_id=10
+			/danh-muc/nhac-tre-10.html
+		 -->
+	<rule>
+		<from>^/trang-chu.html$</from>
+		<to>/home</to>
+	</rule>	
+	<rule>
+		<from>^/lien-he.html$</from>
+		<to>/contact</to>
+	</rule>	
+	<rule>
+		<from>^/lien-he-(.+).html$</from>
+		<to>/contact?msg=$1</to>
+	</rule>	
+	<rule>
+		<from>^/trang-chu/trang-(.+).html$</from>
+		<to>/home?page=$1</to>
+	</rule>		 
+	<rule>
+		<from>^/danh-muc/(.+)-(.+)/trang-(.+).html$</from>
+		<to>/cat?cat_id=$2&amp;page=$3</to>
+	</rule>
+	<rule>
+		<from>^/chi-tiet/(.+)/(.+)-(.+).html$</from>
+		<to>/detail?id=$3</to>
+	</rule>
+	
+	<!-- login -->
+	<rule>
+		<from>^/login.html$</from>
+		<to>/auth/login</to>
+	</rule>	
+	
+		<rule>
+		<from>^/login-(.+).html$</from>
+		<to>/auth/login?msg=$1</to>
+	</rule>	
+	<!-- ADMIN -->
+	<rule>
+		<from>^/quan-ly.html$</from>
+		<to>/admin</to>
+	</rule>
+	<!-- CAT -->
+	<rule>
+		<from>^/quan-ly/danh-muc.html$</from>
+		<to>/admin/cat/index</to>
+	</rule>
+	
+	<rule>
+		<from>^/quan-ly/danh-muc/them-danh-muc.html$</from>
+		<to>/admin/cat/add</to>
+	</rule>
+	
+	<rule>
+		<from>^/quan-ly/danh-muc/sua-danh-muc-(.+).html$</from>
+		<to>/admin/cat/edit?id=$1</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/danh-muc-(.+).html$</from>
+		<to>/admin/cat/index?msg=$1</to>
+	</rule>
+	
+	<!-- SONG -->
+	<rule>
+		<from>^/quan-ly/bai-hat.html$</from>
+		<to>/admin/song/index</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/bai-hat/them-bai-hat.html$</from>
+		<to>/admin/song/add</to>
+	</rule>
+
+	<rule>
+		<from>^/quan-ly/bai-hat/sua-bai-hat-(.+).html$</from>
+		<to>/admin/song/edit?id=$1</to>
+	</rule>
+
+	<rule>
+		<from>^/quan-ly/bai-hat-(.+).html$</from>
+		<to>/admin/song/index?msg=$1</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/bai-hat/trang-(.+).html$</from>
+		<to>/admin/song/index?page=$1</to>
+	</rule>
+		<!-- USER -->
+	<rule>
+		<from>^/quan-ly/nguoi-dung.html$</from>
+		<to>/admin/user/index</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/nguoi-dung/them-nguoi-dung.html$</from>
+		<to>/admin/user/add</to>
+	</rule>
+
+	<rule>
+		<from>^/quan-ly/nguoi-dung/sua-nguoi-dung-(.+).html$</from>
+		<to>/admin/user/edit?id=$1</to>
+	</rule>
+
+	<rule>
+		<from>^/quan-ly/nguoi-dung-(.+).html$</from>
+		<to>/admin/user/index?msg=$1</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/nguoi-dung/trang-(.+).html$</from>
+		<to>/admin/user/index?page=$1</to>
+	</rule>
+	<!-- contact -->
+	<rule>
+		<from>^/quan-ly/lien-he.html$</from>
+		<to>/admin/contact/index</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/lien-he-(.+).html$</from>
+		<to>/admin/contact/index?msg=$1</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/lien-he/trang-(.+).html$</from>
+		<to>/admin/contact/index?page=$1</to>
+	</rule>
+	<!-- adver -->
+	<rule>
+		<from>^/quan-ly/quang-cao.html$</from>
+		<to>/admin/adver/index</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/quang-cao/them-quang-cao.html$</from>
+		<to>/admin/adver/add</to>
+	</rule>
+	
+	<rule>
+		<from>^/quan-ly/quang-cao/sua-quang-cao-(.+).html$</from>
+		<to>/admin/adver/edit?id=$1</to>
+	</rule>
+	<rule>
+		<from>^/quan-ly/quang-cao-(.+).html$</from>
+		<to>/admin/adver/index?msg=$1</to>
+	</rule>
+	<!-- ERROR -->
+	<rule>
+		<from>^/error.html$</from>
+		<to>/admin/error</to>
+	</rule>
+	<rule>
+		<from>^/trang-chu/error.html$</from>
+		<to>/public/error</to>
+	</rule>
+</urlrewrite>
